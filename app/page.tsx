@@ -6,6 +6,7 @@ import TotalUsers from "./components/TotalUsers";
 import NavigationLink from "./components/NavigationLink";
 import ImageSlider from "./components/ImageSlider";
 import VisitingCard from "./components/VisitingCard";
+import { BASE_API_URL } from "@/lib/utils";
 
 
 export default function Home() {
@@ -15,7 +16,7 @@ export default function Home() {
   const handleClick = () => {
     router.push("/search");
   };
-console.log('{BASE_API_URL}')
+  console.log({ BASE_API_URL });
   return (
     <div className="min-h-screen flex flex-col items-center text-gray-200 py-4 px-2 overflow-x-hidden">
       <h2 className="text-2xl text-green-300 text-center p-4 md:text-2xl lg:text-3xl md:p-6 lg:p-8 m-4">
