@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { BASE_API_URL } from "@/lib/utils";
 import { AdminUser } from "@/lib/type";
-
+import { unstable_noStore as noStore } from "next/cache";
 interface AdminUsersListProps {
   adminUsers: AdminUser[];
   error?: string;
 }
 
 const AdminUsersList = ({ adminUsers: initialUsers = [], error = "" }: AdminUsersListProps) => {
+  noStore();
   const [adminUsers, setAdminUsers] = useState<AdminUser[]>(initialUsers);
 
   const toggleAdminStatus = async (userId: string, currentStatus: boolean) => {
@@ -63,7 +64,6 @@ const AdminUsersList = ({ adminUsers: initialUsers = [], error = "" }: AdminUser
   if (adminUsers.length === 0) {
     return <div className="text-white">No users found</div>;
   }
-
   return (
     <div className="container mx-auto p-4">
       <h2 className="text-3xl font-bold mb-6 text-white text-center">Admin Users</h2>

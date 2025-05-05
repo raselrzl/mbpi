@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import { BASE_API_URL } from "@/lib/utils";
 import { User } from "@/lib/type";
 import Search from "./Search";
-
+import { unstable_noStore as noStore } from "next/cache";
 const UsersServer = () => {
+noStore();
   const [users, setUsers] = useState<User[]>([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);

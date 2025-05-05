@@ -1,7 +1,7 @@
 // components/Modal.tsx
 
 import React from "react";
-
+import { unstable_noStore as noStore } from "next/cache";
 interface ModalProps {
   isOpen: boolean;
   title: string;
@@ -10,6 +10,7 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ isOpen, title, message, onClose }) => {
+  noStore();
   if (!isOpen) return null;
 
   return (

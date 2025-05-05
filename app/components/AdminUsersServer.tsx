@@ -2,6 +2,7 @@
 import { BASE_API_URL } from "@/lib/utils";
 import AdminUsersList from "./AdminUserList";
 import { AdminUser } from "@/lib/type";
+import { unstable_noStore as noStore } from "next/cache";
 
 const fetchAdminUsers = async (): Promise<{ adminUsers: AdminUser[]; error: string }> => {
   let adminUsers: AdminUser[] = [];
@@ -26,6 +27,7 @@ const fetchAdminUsers = async (): Promise<{ adminUsers: AdminUser[]; error: stri
 
 // Server-side data fetching component
 const AdminUsersServer = async () => {
+  noStore();
   const { adminUsers, error } = await fetchAdminUsers();
 
   return (
